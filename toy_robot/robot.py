@@ -41,6 +41,14 @@ class Robot:
         self.location = location
         self.direction = direction
 
+    def right(self):
+        self._rotate(1)
 
+    def left(self):
+        self._rotate(-1)
 
-
+    def _rotate(self, direction: int) -> None:
+        new_direction = self._direction + direction
+        if not 0 < self._direction + direction < 5:  # full rotation
+            new_direction = 1 if new_direction else 4
+        self._direction = new_direction
