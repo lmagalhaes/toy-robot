@@ -4,7 +4,7 @@ import pytest
 
 class TestRobotPlacement:
 
-    def test_robot_coordinates_are_none_if_not_placed_anywhere(self):
+    def test_robot_location_is_none_if_not_placed_anywhere(self):
         robot = Robot()
         assert Point(None, None) == robot.location
         assert robot.direction is None
@@ -13,7 +13,7 @@ class TestRobotPlacement:
         robot = Robot()
         assert not robot.is_activated
 
-    def test_robot_set_coordinates_and_direction_when_place_command_is_given(self):
+    def test_robot_set_location_and_direction_when_place_command_is_given(self):
         robot = Robot()
         location, position = Point(0, 0), 'north'
         robot.place(location, position)
@@ -27,7 +27,7 @@ class TestRobotPlacement:
 
         assert robot.is_activated
 
-    def test_robot_place_command_if_trying_to_place_outside_boundary(self):
+    def test_ignores_place_command_if_trying_to_place_outside_boundary(self):
         robot = Robot()
         robot.place(Point(5, 5), 'north')
 
@@ -76,6 +76,11 @@ class TestRobotRotation:
 
 
 class TestRobotMove:
+
+    def test_robot_should_ignore_command_if_location_is_not_set(self):
+        robot = Robot()
+        robot.move()
+        assert not robot.location
 
     @pytest.mark.parametrize('facing_direction,expected_location', [
         ['north', (2, 3)],
@@ -144,3 +149,15 @@ class TestRobotMove:
         robot.move()
 
         assert initial_location == robot.location
+
+
+class TestRobotReport:
+
+    def test_should_return_empty_string_if_location_not_set(self):
+        robot = Robot()
+        assert '' == robot.report()
+
+    def test_should_return_x_y_and_direction_separated_by_comma(self):
+        robot = Robot()
+        robot.place(Point(2, 4), 'east')
+        assert '2,4,EAST' == robot.report()
