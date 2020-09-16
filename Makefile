@@ -29,4 +29,4 @@ warm-up:
 	docker run --rm -v '${PWD}:/opt/toy_robot' -it toy_robot:local warm-up
 
 test:
-	docker run --rm -v '${PWD}/coverage:/opt/toy_robot/coverage' toy_robot:test
+	docker run --rm -v '${PWD}:/opt/toy_robot' toy_robot:test -vvv
