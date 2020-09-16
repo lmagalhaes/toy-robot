@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+import os
+import signal
+import sys
+
+sys.path.append(os.getenv('APP_HOME'))
+
+from click import group, version_option
+
+from toy_robot import __version__
+from toy_robot.cli import warm_up, start
+
+CONTEXT_SETTINGS = dict(
+    help_option_names=['--help', '-h'],
+)
+
+
+@group(context_settings=CONTEXT_SETTINGS)
+@version_option(version=__version__)
+def cli():
+    """
+        Toy Robot CLI
+    """
+
+
+cli.add_command(start)
+cli.add_command(warm_up)
+
+
+def signal_handler(signal, frame):
+    print('\nOk, Bye.')
+    sys.exit(0)
+
+
+signal.signal(signal.SIGINT, signal_handler)
+
+
+if __name__ == "__main__":
+    cli()
+
