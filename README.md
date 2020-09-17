@@ -80,7 +80,7 @@ The CLI is written in <a href="https://www.python.org/downloads/release/python-3
 
 # How to install
 
-To install the application is just a matter of running one command, by first you need to make sure
+To install the application is just a matter of running one command, but first you need to make sure
 all the installation dependencies are resolved.
 
 ## Dependencies
