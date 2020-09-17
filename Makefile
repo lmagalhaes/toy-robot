@@ -14,19 +14,26 @@ help:
 
 .PHONY: help
 
+docker-build = DOCKER_BUILDKIT=1 BUILDKIT_PROGRESS=plain docker build -t"toy_robot:$(1)" $(2) .
+
+docker-run = docker run --rm -it -v '${PWD}:/opt/toy_robot' $(3) "toy_robot:$(1)" $(2)
+
 install:
-	DOCKER_BUILDKIT=1 BUILDKIT_PROGRESS=plain docker build -t"toy_robot:local" --target prod-image .
-	DOCKER_BUILDKIT=1 BUILDKIT_PROGRESS=plain docker build -t"toy_robot:test" --target test .
+	$(call docker-build,local,--target prod-image)
+	$(call docker-build,test,--target test)
 
 uninstall:
 	docker rmi toy_robot:local
 	docker rmi toy_robot:test
 
 start:
-	docker run --rm -v '${PWD}:/opt/toy_robot' -it toy_robot:local start
+	$(call docker-run,local,start)
 
 warm-up:
-	docker run --rm -v '${PWD}:/opt/toy_robot' -it toy_robot:local warm-up
+	$(call docker-run,local,warm-up)
 
 test:
-	docker run --rm -v '${PWD}:/opt/toy_robot' toy_robot:test -vvv
+	$(call docker-run,test,-vvv)
+
+console:
+	$(call docker-run,local,,-w '${PWD}/toy_robot/bin' --entrypoint bash)
