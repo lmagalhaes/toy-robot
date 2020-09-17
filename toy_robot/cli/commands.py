@@ -22,6 +22,16 @@ WARMUP_FILE_LOCATION = os.path.join(
     'robot_warmup.txt'
 )
 
+AVAILABLE_COMMANDS = dict(
+    place='PLACE X,Y,F: Place on position (X:int,Y:int) facing F\n\tValid F values: NORTH, SOUTH, EAST, WEST.',
+    move='MOVE: Moves 1 position towards the direction it is facing.',
+    left='LEFT: Rotate to the left, without changing position.',
+    right='RIGHT: Rotate to the right, without changing position',
+    report='REPORT: Prints robot\'s current position and direction it is facing'
+)
+
+DESCRIPTIVE_COMMANDS = '\n   '.join(AVAILABLE_COMMANDS.values())
+
 
 class InputCommandsGenerator:
 
@@ -51,8 +61,12 @@ class InputCommandsGenerator:
 
 
 def robot_challenge(robot: Robot, commands: Generator) -> None:
-    print('Starting Robot.\nTo exit press CTRL+C at any time...')
-
+    start_message = f'''Robot started.
+Available Commands: (Commands can be lower case)
+   {DESCRIPTIVE_COMMANDS}
+\nTo exit press CTRL+C at any time...
+'''
+    print(start_message)
 
     for command in commands:
         try:
@@ -69,7 +83,7 @@ def robot_challenge(robot: Robot, commands: Generator) -> None:
 def parse_command(command: str) -> list:
     command_name, parameters = _extract_name_and_parameters(command)
 
-    if command_name not in ['place', 'move', 'left', 'right', 'report']:
+    if command_name not in AVAILABLE_COMMANDS:
         raise CommandInvalidError(f'Command "{command}" is unknown and will be ignored.')
 
     if command_name == 'place':
