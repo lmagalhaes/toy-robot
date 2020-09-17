@@ -9,4 +9,6 @@ Each line should represents a single command.
 
 During the warm-up phrase, the cli will read that file and send all the commands to the robot
 the same way it would happen if someone was typing it.
+
+Feel free to edit the file to add and remove commands and all changes will be reflected inside the container
  
