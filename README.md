@@ -1,3 +1,9 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/lmagalhaes/toy-robot/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/lmagalhaes/toy-robot/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/lmagalhaes/toy-robot/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/lmagalhaes/toy-robot/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/lmagalhaes/toy-robot/badges/build.png?b=master)](https://scrutinizer-ci.com/g/lmagalhaes/toy-robot/build-status/master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/lmagalhaes/toy-robot/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+
+
 # Toy Robot Challenge
 
 The Toy Robot is a CLI application that simulates a toy robot moving on a square table top, of dimensions 5 units x 5 units.
