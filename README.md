@@ -14,7 +14,7 @@ The allowed moves are:
     E.g.: `PLACE 0,0,NORTH`
 
 
-* **MOVE:** The robot moves 1 position towards the indicated direction
+* **MOVE:** The robot moves 1 position towards the current facing direction
 
     E.g.:
     ```
@@ -24,7 +24,7 @@ The allowed moves are:
     Robot will move to position (0,1,NORTH)
 
 
-* **LEFT:** The robot rotates to the left direction without changing positions.
+* **LEFT:** The robot rotates to the left of the current direction without changing positions.
 
     E.g.: 
     ```
@@ -34,7 +34,7 @@ The allowed moves are:
     Robot will rotate and start facing WEST.
 
 
-* **RIGHT:** The robot rotates to the right direction without changing positions.
+* **RIGHT:** The robot rotates to the right of the current direction without changing positions.
 
     E.g.: 
     ```
@@ -58,12 +58,12 @@ The allowed moves are:
     **OBS:** If robot is outside boundaries an empty line is printed.
 
 
-### How does it work.
+### How does it work?
 
-To enable the robot an initial 'PLACE' commands is required  with proper coordinates and direction,
+To enable the robot, an initial 'PLACE' commands is required  with proper coordinates and direction,
 and the robot will not respond to any command before the initial 'PLACE' command.
 
-The robot only works within the boundaries that are defined by an imaginary square of fixed size 5X5. Starting from
+The robot only works within the boundaries that are defined by an imaginary square of fixed size 5X5, starting from
 (0,0) up to (4,4).
 
 Once the robot is placed in a valid position any subsequent command will be issued to the robot,
@@ -99,7 +99,7 @@ So, if you don't have them installed already, please follow the links below:
 
 ## Installation
 
-Once the dependencies are installed, just follow the simple steps below to have the API up and running.
+Once the dependencies are installed, just follow the simple steps below to have the CLI up and running.
 
 Clone the repo and change the directory to the newly cloned folder.
 
@@ -129,16 +129,19 @@ To exit press CTRL+C, at any time.
 
 
 # Warm-up
-The warm-up command is a way to send commands to the robot automatically and also are output to the console, 
-so you know what is going on.
+The warm-up command is a way to send commands to the robot automatically.
+All issued commands will be output to the console, so you know what is going on.
+
+To warm-up the robot, run `make warm-up`.
 
 All the commands issued to the robot can be on the file [`robot_warmup.txt`](resources/robot_warmup.txt), inside the [`resources`](resources) folder.
- 
+
+Feel free to edit the file to add and remove commands and all changes will be reflected inside the container
  
 # Running unit tests
-To run the unit tests simply call `make test`.
+To run the unit tests, simply run `make test`.
 
-It will use run the testing container and run the unittests.
+It will use run the testing container and trigger the `pytest` command.
 
 After the tests finish running, you can check the coverage by opening `coverage/index.html` in the browser.
 
@@ -150,22 +153,25 @@ The coverage/index.html can be found on the root folder.
 If you want to log-in into the container and play with the CLI, run  `make console`.
 
 ```
-lmagalhaes@TIA01297:~/workspace/toy-robot [ master * ]$ make console
+make console
 root@fa1950e80dc0:/opt/toy_robot# toy-robot --version
 toy-robot, version 1.0.0
 root@fa1950e80dc0:/opt/toy_robot# exit
- 
 ```
 
-To leave the container, press CTRL+D
+To exit the container, press CTRL+D, at any time.
 
 ## Uninstall
 
-To uninstall run `make uninstall`. It will remove all images.
+To uninstall run `make uninstall` the remove all images.
 Than change to the directory outside the project and delete it.
 
 ```
 make uninstall
+```
+
+Then, move out of the `toy-robot` directory and delete it.
+```
 cd ..
 rm -rf toy-robot
 ```
