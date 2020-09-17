@@ -1,15 +1,28 @@
 #!make
 
 help:
-	@echo "available actions:"
-	@echo "    build"
-	@echo "        Build container image"
+	@echo 'Available actions:'
+	@echo ''
+	@echo '    Install'
+	@echo '        Build images'
+	@echo ''
+	@echo '    Uninstall'
+	@echo '        Delete images'
+	@echo ''
 	@echo '    test'
 	@echo '        Run unit tests'
+	@echo '        A coverage folder will be generated in the root folder.'
+	@echo '        Open coverage/index.html on the browser to see full coverage.'
+	@echo ''
+	@echo '    console'
+	@echo '        Log-in to the container. Useful for debug and access the binary directly'
+	@echo ''
 	@echo '    start'
-	@echo '        Start application (It does not install the application, just start containers)'
+	@echo '        Start application and get robot ready to receive commands'
+	@echo ''
 	@echo '    warm-up'
-	@echo '        Stop application (It does not uninstall the application, just stop containers)'
+	@echo '        Start the warm-up process that sends commands to the bot automatically.'
+	@echo '        THe commands that will be sent to the bot can be found in the file resources/robot_warmup.txt'
 
 
 .PHONY: help
