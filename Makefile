@@ -26,6 +26,7 @@ help:
 
 
 .PHONY: help
+.SILENT:
 
 docker-build = DOCKER_BUILDKIT=1 BUILDKIT_PROGRESS=plain docker build -t"toy_robot:$(1)" $(2) .
 
@@ -49,4 +50,4 @@ test:
 	$(call docker-run,test,-vvv)
 
 console:
-	$(call docker-run,local,,-w '${PWD}/toy_robot/bin' --entrypoint bash)
+	$(call docker-run,local,,-w '/opt/toy_robot/' --entrypoint bash)
