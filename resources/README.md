@@ -12,3 +12,7 @@ the same way it would happen if someone was typing it.
 
 Feel free to edit the file to add and remove commands and all changes will be reflected inside the container
  
+
+## Robot sketch
+
+![Robot Initial Sketch](toy-robot-sketch.jpg "Initial Sketch")
