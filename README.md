@@ -6,8 +6,9 @@
 
 # Toy Robot Challenge
 
-The Toy Robot is a CLI application that simulates a toy robot moving on a square table top, of dimensions 5 units x 5 units.
- 
+The Toy Robot is a CLI application that simulates a toy robot moving on a square table-top, of dimensions 5 units x 5 units,
+where position (0,0) is at the bottom-right of the square.
+
 There are no other obstructions on the table surface and the robot is free to roam around the surface of the table, 
 but must be prevented from falling to destruction.
  

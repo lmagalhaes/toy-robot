@@ -129,7 +129,7 @@ def start():  # pragma: no cover
     and the robot will not respond to any command before the initial 'PLACE' command.
 
     The robot only works within the boundaries that are defined by an imaginary square of fixed size 5X5. Starting from
-    (0,0) up to (4,4).
+    (0,0) (left-bottom) up to (4,4) (top-right).
 
     Once the robot is placed in a valid position any subsequent command will be issued to the robot,
     but any command that moves the robot outside its limits will be ignored, including another 'PLACE' command.
