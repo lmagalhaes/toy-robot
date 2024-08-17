@@ -1,4 +1,4 @@
-FROM python:3.8-buster as prod-image
+FROM python:3.8-buster AS prod-image
 
 RUN pip install -U pip pipenv
 
@@ -17,7 +17,7 @@ ENV PATH="${APP_HOME}:${APP_BIN}:${PATH}"
 ENTRYPOINT ["toy-robot"]
 
 
-FROM prod-image as test
+FROM prod-image AS test
 
 RUN pipenv install -d --system
 
