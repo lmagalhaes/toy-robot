@@ -84,9 +84,13 @@ class TestRobotMove:
 
     @pytest.mark.parametrize('facing_direction,expected_location', [
         ['north', (2, 3)],
+        ['n', (2, 3)],
         ['east', (3, 2)],
+        ['e', (3, 2)],
         ['south', (2, 1)],
-        ['west', (1, 2)]
+        ['s', (2, 1)],
+        ['west', (1, 2)],
+        ['w', (1, 2)]
     ])
     def test_robot_should_move_one_position_towards_the_direction_it_is_facing(self, facing_direction, expected_location):
         robot = Robot()
