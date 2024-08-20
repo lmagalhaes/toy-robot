@@ -7,6 +7,10 @@ class CardinalCoordinates(IntEnum):
     EAST = 2
     SOUTH = 3
     WEST = 4
+    N = 1
+    E = 2
+    S = 3
+    W = 4
 
 
 class Point:
